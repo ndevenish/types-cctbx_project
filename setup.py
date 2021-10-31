@@ -1,0 +1,14 @@
+from setuptools import find_packages, setup
+
+print(find_packages(where="src"))
+
+setup(
+    name="cctbx-project-stubs",
+    author="Nicholas Devenish",
+    version="0.1",
+    packages=[
+        "libtbx-stubs",
+        "scitbx-stubs",
+    ],
+    package_dir={"": "src"},
+)

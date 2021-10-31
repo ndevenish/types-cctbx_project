@@ -1,0 +1,3 @@
+class AutoType: ...
+
+Auto: AutoType
