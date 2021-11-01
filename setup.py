@@ -7,6 +7,7 @@ setup(
     author="Nicholas Devenish",
     version="0.1",
     packages=[
+        "cctbx-stubs",
         "libtbx-stubs",
         "scitbx-stubs",
     ],
