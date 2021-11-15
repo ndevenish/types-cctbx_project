@@ -10,6 +10,7 @@ setup(
         "cctbx-stubs",
         "libtbx-stubs",
         "scitbx-stubs",
+        "boost_adaptbx-stubs",
     ],
     package_dir={"": "src"},
 )
