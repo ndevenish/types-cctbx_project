@@ -3,7 +3,7 @@ from typing import Dict, Generator, List, overload
 from scitbx.array_family import flex as flex
 
 class vector:
-    pass
+    def as_dense_vector(self) -> flex.double: ...
 
 class matrix:
     @overload
@@ -19,9 +19,12 @@ class matrix:
     def as_dense_matrix(self) -> flex.double: ...
     def col(self, i: int) -> vector: ...
     def cols(self) -> Generator[vector, None, None]: ...
+    @overload
+    def assign_block(self, block: matrix, i: int, j: int) -> None: ...
+    @overload
+    def assign_block(self, block: flex.double, i: int, j: int) -> None: ...
 
 # as_dense_matrix
-# assign_block
 # clone
 # col
 # cols
