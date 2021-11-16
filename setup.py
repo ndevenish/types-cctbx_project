@@ -11,6 +11,7 @@ setup(
         "libtbx-stubs",
         "scitbx-stubs",
         "boost_adaptbx-stubs",
+        "iotbx-stubs",
     ],
     package_dir={"": "src"},
 )
