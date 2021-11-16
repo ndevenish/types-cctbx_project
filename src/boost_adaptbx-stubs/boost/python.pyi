@@ -1,6 +1,8 @@
 from types import ModuleType
 from typing import Any, Callable, Type, Union
 
+from .boost_python_meta_ext import *
+
 platform_info: str
 
 def import_ext(name: str, optional: bool = ...) -> ModuleType:
