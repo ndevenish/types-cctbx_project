@@ -1,0 +1,3 @@
+from collections.abc import MutableSet
+
+class OrderedSet(MutableSet): ...
