@@ -1,0 +1,3 @@
+from .detectorbase import DetectorImageBase
+
+class MARImage(DetectorImageBase): ...
