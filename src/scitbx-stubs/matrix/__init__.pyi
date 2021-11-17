@@ -1,4 +1,14 @@
-from typing import Any, Container, Iterator, Sequence, Tuple, Type, TypeVar, Union
+from typing import (
+    Any,
+    Container,
+    Iterator,
+    Optional,
+    Sequence,
+    Tuple,
+    Type,
+    TypeVar,
+    Union,
+)
 
 T = TypeVar("T")
 
