@@ -1,6 +1,6 @@
 from typing import Any, Type
 
-Default: Type
+class Default: ...
 
 def approx_equal(
     a1: Any,
