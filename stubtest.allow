@@ -1,2 +1,7 @@
 libtbx.env                 # Dynamically created upon load_env import
 libtbx.phil.PhilConverter  # Typing-only protocol
+boost_adaptbx.boost.boost_python_meta_ext # extension module in-source for stubs
+cctbx.crystal.special_position_settings.asu_mappings # Inconsistent runtime subtyping
+cctbx.crystal.symmetry.asu_mappings # Inconsistent runtime subtyping
+cctbx.eltbx.cctbx_eltbx_attenuation_coefficient_ext # Extension module
+

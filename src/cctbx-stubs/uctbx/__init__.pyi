@@ -7,7 +7,6 @@ from scitbx.matrix import rec
 
 class unit_cell:
     # From subclass with same name
-    @overload
     def __init__(
         self,
         parameters: Optional[
@@ -20,8 +19,6 @@ class unit_cell:
         metrical_matrix: None = ...,
         orthogonalization_matrix: Optional[rec] = ...,
     ) -> None: ...
-    @overload
-    def __init__(self, *args, **kwargs) -> None: ...
     debye_waller_factor: Any
     def __format__(self, format_spec: str = ...): ...
     def box_frac_around_sites(
