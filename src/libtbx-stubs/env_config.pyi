@@ -1,5 +1,6 @@
 class environment:
     dispatcher_name: str
+    def __init__(self, build_path: str) -> None: ...
     def set_os_environ_all_dist(self) -> None:
         """Set environment variable <NAME>_DIST for all active *tbx modules"""
     def under_base(self, path: str, return_relocatable_path: bool = ...) -> str:

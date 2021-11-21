@@ -29,7 +29,7 @@ class hashed_stack(stack):
 
 class queue(deque_template):
     list_proxy_type: Optional[Type]
-    set_proxy_type: Type
+    set_proxy_type: Optional[Type]
     def pull(self): ...
 
 class hashed_queue(queue):
