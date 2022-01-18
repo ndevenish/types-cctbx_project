@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Optional, Union
 
 import libtbx
@@ -12,10 +14,10 @@ from cctbx.uctbx import unit_cell
 class symmetry:
     def __init__(
         self,
-        unit_cell: Optional[unit_cell] = ...,
-        space_group_symbol: Optional[str] = ...,
-        space_group_info: Optional[space_group_info] = ...,
-        space_group: Optional[space_group] = ...,
+        unit_cell: unit_cell | None = ...,
+        space_group_symbol: str | None = ...,
+        space_group_info: space_group_info | None = ...,
+        space_group: space_group | None = ...,
         correct_rhombohedral_setting_if_necessary: bool = ...,
         assert_is_compatible_unit_cell: bool = ...,
         raise_sorry_if_incompatible_unit_cell: bool = ...,
@@ -26,7 +28,7 @@ class symmetry:
     def is_compatible_unit_cell(self) -> bool: ...
     def space_group(self) -> space_group: ...
     def space_group_info(self) -> space_group_info: ...
-    def unit_cell(self) -> Union[unit_cell, unit_cell]: ...
+    def unit_cell(self) -> unit_cell | unit_cell: ...
     # Stubgen parts
     def customized_copy(
         self,
@@ -36,7 +38,7 @@ class symmetry:
     ): ...
     def space_group_number(self): ...
     def as_py_code(self, indent: str = ...): ...
-    def show_summary(self, f: Optional[Any] = ..., prefix: str = ...) -> None: ...
+    def show_summary(self, f: Any | None = ..., prefix: str = ...) -> None: ...
     def as_str(self, prefix: str = ...): ...
     def is_identical_symmetry(self, other): ...
     def is_similar_symmetry(
@@ -52,19 +54,19 @@ class symmetry:
     def change_of_basis_op_to_reference_setting(self): ...
     def as_reference_setting(self): ...
     def change_of_basis_op_to_best_cell(
-        self, angular_tolerance: Optional[Any] = ..., best_monoclinic_beta: bool = ...
+        self, angular_tolerance: Any | None = ..., best_monoclinic_beta: bool = ...
     ): ...
-    def best_cell(self, angular_tolerance: Optional[Any] = ...): ...
+    def best_cell(self, angular_tolerance: Any | None = ...): ...
     def minimum_cell(self): ...
     def change_of_basis_op_to_niggli_cell(
         self,
-        relative_epsilon: Optional[Any] = ...,
-        iteration_limit: Optional[Any] = ...,
+        relative_epsilon: Any | None = ...,
+        iteration_limit: Any | None = ...,
     ): ...
     def niggli_cell(
         self,
-        relative_epsilon: Optional[Any] = ...,
-        iteration_limit: Optional[Any] = ...,
+        relative_epsilon: Any | None = ...,
+        iteration_limit: Any | None = ...,
     ): ...
     def change_of_basis_op_to_inverse_hand(self): ...
     def inverse_hand(self): ...
@@ -81,11 +83,11 @@ class symmetry:
     def direct_space_asu(self): ...
     def gridding(
         self,
-        d_min: Optional[Any] = ...,
-        resolution_factor: Optional[Any] = ...,
-        step: Optional[Any] = ...,
-        symmetry_flags: Optional[Any] = ...,
-        mandatory_factors: Optional[Any] = ...,
+        d_min: Any | None = ...,
+        resolution_factor: Any | None = ...,
+        step: Any | None = ...,
+        symmetry_flags: Any | None = ...,
+        mandatory_factors: Any | None = ...,
         max_prime: int = ...,
         assert_shannon_sampling: bool = ...,
     ): ...
@@ -93,7 +95,7 @@ class symmetry:
     # the special_position_settings subclass has an incompatible declaration.
     # A short survey revealed no obvious direct uses of this positionally.
     def asu_mappings(
-        self, *, buffer_thickness, asu_is_inside_epsilon: Optional[Any] = ...
+        self, *, buffer_thickness, asu_is_inside_epsilon: Any | None = ...
     ): ...
     def average_u_cart(self, u_cart): ...
     def average_b_cart(self, b_cart): ...
@@ -104,11 +106,11 @@ class symmetry:
         assert_min_distance_sym_equiv: bool = ...,
     ): ...
     def miller_set(self, indices, anomalous_flag): ...
-    def build_miller_set(self, anomalous_flag, d_min, d_max: Optional[Any] = ...): ...
+    def build_miller_set(self, anomalous_flag, d_min, d_max: Any | None = ...): ...
     def as_pdb_remark_290(self): ...
     def as_cif_block(
         self,
-        cell_covariance_matrix: Optional[Any] = ...,
+        cell_covariance_matrix: Any | None = ...,
         format: str = ...,
         numeric_format: str = ...,
     ): ...
@@ -117,8 +119,8 @@ class symmetry:
     def is_empty(self): ...
 
 def select_crystal_symmetry(
-    from_command_line: Optional[Any] = ...,
-    from_parameter_file: Optional[Any] = ...,
+    from_command_line: Any | None = ...,
+    from_parameter_file: Any | None = ...,
     from_coordinate_files=...,
     from_reflection_files=...,
     enforce_similarity: bool = ...,
@@ -126,10 +128,10 @@ def select_crystal_symmetry(
     absolute_length_tolerance=...,
 ): ...
 def non_crystallographic_symmetry(
-    sites_cart: Optional[Any] = ...,
-    sites_cart_min: Optional[Any] = ...,
-    sites_cart_max: Optional[Any] = ...,
-    buffer_layer: Optional[Any] = ...,
+    sites_cart: Any | None = ...,
+    sites_cart_min: Any | None = ...,
+    sites_cart_max: Any | None = ...,
+    buffer_layer: Any | None = ...,
     default_buffer_layer: float = ...,
     min_unit_cell_length: int = ...,
 ): ...
@@ -146,62 +148,60 @@ class special_position_settings(symmetry):
     def u_star_tolerance(self): ...
     def assert_min_distance_sym_equiv(self): ...
     def change_basis(self, cb_op): ...
-    def site_symmetry(
-        self, site: Optional[Any] = ..., site_cart: Optional[Any] = ...
-    ): ...
+    def site_symmetry(self, site: Any | None = ..., site_cart: Any | None = ...): ...
     def sym_equiv_sites(self, site): ...
     def site_symmetry_table(
         self,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
-        unconditional_general_position_flags: Optional[Any] = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
+        unconditional_general_position_flags: Any | None = ...,
     ): ...
-    def xray_structure(self, scatterers: Optional[Any] = ...): ...
+    def xray_structure(self, scatterers: Any | None = ...): ...
     def asu_mappings(
         self,
         *,
         buffer_thickness,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
-        site_symmetry_table: Optional[Any] = ...,
-        asu_is_inside_epsilon: Optional[Any] = ...
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
+        site_symmetry_table: Any | None = ...,
+        asu_is_inside_epsilon: Any | None = ...
     ): ...
     def pair_generator(
         self,
         distance_cutoff,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
-        site_symmetry_table: Optional[Any] = ...,
-        asu_mappings_buffer_thickness: Optional[Any] = ...,
-        asu_is_inside_epsilon: Optional[Any] = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
+        site_symmetry_table: Any | None = ...,
+        asu_mappings_buffer_thickness: Any | None = ...,
+        asu_is_inside_epsilon: Any | None = ...,
         minimal: bool = ...,
     ): ...
     def pair_asu_table(
         self,
         distance_cutoff,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
-        site_symmetry_table: Optional[Any] = ...,
-        asu_mappings_buffer_thickness: Optional[Any] = ...,
-        asu_is_inside_epsilon: Optional[Any] = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
+        site_symmetry_table: Any | None = ...,
+        asu_mappings_buffer_thickness: Any | None = ...,
+        asu_is_inside_epsilon: Any | None = ...,
         min_cubicle_edge: int = ...,
-        distance_cutoff_epsilon: Optional[Any] = ...,
+        distance_cutoff_epsilon: Any | None = ...,
     ): ...
     def incremental_pairs(
         self,
         distance_cutoff,
-        asu_is_inside_epsilon: Optional[Any] = ...,
+        asu_is_inside_epsilon: Any | None = ...,
         asu_mappings_buffer_thickness: int = ...,
         cubicle_epsilon: int = ...,
     ): ...
     def site_cluster_analysis(
         self,
-        min_distance: Optional[Any] = ...,
-        min_cross_distance: Optional[Any] = ...,
-        min_self_distance: Optional[Any] = ...,
+        min_distance: Any | None = ...,
+        min_cross_distance: Any | None = ...,
+        min_self_distance: Any | None = ...,
         general_positions_only: bool = ...,
         estimated_reduction_factor: int = ...,
-        asu_is_inside_epsilon: Optional[Any] = ...,
+        asu_is_inside_epsilon: Any | None = ...,
         asu_mappings_buffer_thickness: int = ...,
         min_cubicle_edge: int = ...,
         cubicle_epsilon: int = ...,
@@ -210,9 +210,9 @@ class special_position_settings(symmetry):
 def correct_special_position(
     crystal_symmetry,
     special_op,
-    site_frac: Optional[Any] = ...,
-    site_cart: Optional[Any] = ...,
-    site_label: Optional[Any] = ...,
+    site_frac: Any | None = ...,
+    site_cart: Any | None = ...,
+    site_label: Any | None = ...,
     tolerance: int = ...,
     error_message: str = ...,
 ): ...
@@ -226,9 +226,9 @@ class calculate_distances:
         pair_asu_table,
         sites_frac,
         skip_j_seq_less_than_i_seq: bool = ...,
-        covariance_matrix: Optional[Any] = ...,
-        cell_covariance_matrix: Optional[Any] = ...,
-        parameter_map: Optional[Any] = ...,
+        covariance_matrix: Any | None = ...,
+        cell_covariance_matrix: Any | None = ...,
+        parameter_map: Any | None = ...,
     ) -> None: ...
     def __iter__(self): ...
     def __next__(self) -> None: ...
@@ -240,13 +240,13 @@ class show_distances(libtbx.slots_getstate_setstate):
     def __init__(
         self,
         pair_asu_table,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         show_cartesian: bool = ...,
         keep_pair_asu_table: bool = ...,
         skip_j_seq_less_than_i_seq: bool = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ) -> None: ...
 
 class calculate_angles:
@@ -259,10 +259,10 @@ class calculate_angles:
         pair_asu_table,
         sites_frac,
         skip_j_seq_less_than_i_seq: bool = ...,
-        covariance_matrix: Optional[Any] = ...,
-        cell_covariance_matrix: Optional[Any] = ...,
-        parameter_map: Optional[Any] = ...,
-        conformer_indices: Optional[Any] = ...,
+        covariance_matrix: Any | None = ...,
+        cell_covariance_matrix: Any | None = ...,
+        parameter_map: Any | None = ...,
+        conformer_indices: Any | None = ...,
     ) -> None: ...
     def __iter__(self): ...
     def __next__(self) -> None: ...
@@ -274,12 +274,12 @@ class show_angles:
     def __init__(
         self,
         pair_asu_table,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         show_cartesian: bool = ...,
         keep_pair_asu_table: bool = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ) -> None: ...
 
 class dihedral_angle_def:
@@ -292,12 +292,12 @@ class calculate_dihedrals:
         self,
         pair_asu_table,
         sites_frac,
-        dihedral_defs: Optional[Any] = ...,
+        dihedral_defs: Any | None = ...,
         skip_j_seq_less_than_i_seq: bool = ...,
-        covariance_matrix: Optional[Any] = ...,
-        cell_covariance_matrix: Optional[Any] = ...,
-        parameter_map: Optional[Any] = ...,
-        conformer_indices: Optional[Any] = ...,
+        covariance_matrix: Any | None = ...,
+        cell_covariance_matrix: Any | None = ...,
+        parameter_map: Any | None = ...,
+        conformer_indices: Any | None = ...,
         max_d: float = ...,
         max_angle: int = ...,
     ) -> None: ...
@@ -309,13 +309,13 @@ class show_dihedral_angles:
     def __init__(
         self,
         pair_asu_table,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         show_cartesian: bool = ...,
         max_d: float = ...,
         max_angle: int = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ) -> None: ...
 
 class sym_pair(libtbx.slots_getstate_setstate):
@@ -340,7 +340,7 @@ class incremental_clustering(_clustering_mix_in):
         special_position_settings,
         sites_cart,
         distance_cutoffs,
-        scores: Optional[Any] = ...,
+        scores: Any | None = ...,
         discard_special_positions: bool = ...,
         discard_not_strictly_inside_asu: bool = ...,
         initial_required_cluster_size: int = ...,
@@ -572,35 +572,33 @@ class pair_asu_table:
     def __ne__(self, other) -> Any: ...
     # Injected
     def as_nested_lists(self): ...
-    def show(
-        self, f: Optional[Any] = ..., site_labels: Optional[Any] = ...
-    ) -> None: ...
+    def show(self, f: Any | None = ..., site_labels: Any | None = ...) -> None: ...
     def show_distances(
         self,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         show_cartesian: bool = ...,
         keep_pair_asu_table: bool = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ): ...
     def show_angles(
         self,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         keep_pair_asu_table: bool = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ): ...
     def show_dihedral_angles(
         self,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         keep_pair_asu_table: bool = ...,
         max_d: float = ...,
         max_angle: int = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ): ...
 
 class pair_asu_table_table:
@@ -654,26 +652,26 @@ class pair_sym_table:
     # Injected
     def iterator(self) -> None: ...
     def tidy(self, site_symmetry_table): ...
-    def full_connectivity(self, site_symmetry_table: Optional[Any] = ...): ...
+    def full_connectivity(self, site_symmetry_table: Any | None = ...): ...
     def show(
         self,
-        f: Optional[Any] = ...,
-        site_labels: Optional[Any] = ...,
-        site_symmetry_table: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        unit_cell: Optional[Any] = ...,
+        f: Any | None = ...,
+        site_labels: Any | None = ...,
+        site_symmetry_table: Any | None = ...,
+        sites_frac: Any | None = ...,
+        unit_cell: Any | None = ...,
     ) -> None: ...
     def show_distances(
         self,
         unit_cell,
         site_symmetry_table,
-        site_labels: Optional[Any] = ...,
-        sites_frac: Optional[Any] = ...,
-        sites_cart: Optional[Any] = ...,
+        site_labels: Any | None = ...,
+        sites_frac: Any | None = ...,
+        sites_cart: Any | None = ...,
         show_cartesian: bool = ...,
         skip_j_seq_less_than_i_seq: bool = ...,
         skip_sym_equiv: bool = ...,
-        out: Optional[Any] = ...,
+        out: Any | None = ...,
     ): ...
     def number_of_pairs_involving_symmetry(self): ...
     def simple_edge_list(self): ...

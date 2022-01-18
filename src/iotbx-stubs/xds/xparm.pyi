@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Optional
 
 class reader:
@@ -55,10 +57,10 @@ class writer:
         detector_x_axis,
         detector_y_axis,
         detector_normal,
-        segments: Optional[Any] = ...,
-        orientation: Optional[Any] = ...,
+        segments: Any | None = ...,
+        orientation: Any | None = ...,
     ) -> None: ...
-    def show(self, out: Optional[Any] = ...) -> None: ...
+    def show(self, out: Any | None = ...) -> None: ...
     def write_file(self, filename) -> None: ...
 
 xparm_xds_template: str
@@ -84,6 +86,6 @@ def write(
     detector_x_axis,
     detector_y_axis,
     detector_normal,
-    segments: Optional[Any] = ...,
-    orientation: Optional[Any] = ...,
+    segments: Any | None = ...,
+    orientation: Any | None = ...,
 ): ...

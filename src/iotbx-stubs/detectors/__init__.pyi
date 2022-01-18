@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from .adsc import ADSCImage
 from .detectorbase import DetectorImageBase
 from .edf import EDFImage

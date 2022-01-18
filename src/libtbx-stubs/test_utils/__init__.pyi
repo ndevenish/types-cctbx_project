@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, Type
 
 class Default: ...
@@ -7,6 +9,6 @@ def approx_equal(
     a2: Any,
     eps: float = ...,
     multiplier: float = ...,
-    out: Type[Default] = ...,
+    out: type[Default] = ...,
     prefix: str = ...,
 ) -> bool: ...

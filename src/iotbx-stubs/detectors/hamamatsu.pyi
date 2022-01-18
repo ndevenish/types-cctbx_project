@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from iotbx.detectors.adsc import ADSCImage as ADSCImage
 
 class HamamatsuImage(ADSCImage):

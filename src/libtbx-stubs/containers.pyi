@@ -1,10 +1,12 @@
+from __future__ import annotations
+
 from collections.abc import Collection, Iterator, MutableSet
 from typing import Any, Dict, List, Optional, Type
 
 class OrderedSet(MutableSet):
-    end: List[Any]
-    map: Dict
-    def __init__(self, iterable: Optional[Collection] = ...) -> None: ...
+    end: list[Any]
+    map: dict
+    def __init__(self, iterable: Collection | None = ...) -> None: ...
     def __contains__(self, key) -> bool: ...
     def __iter__(self) -> Iterator[Any]: ...
     def __len__(self) -> int: ...
@@ -20,17 +22,17 @@ class deque_template:
     def __contains__(self, item): ...
 
 class stack(deque_template):
-    list_proxy_type: Type
-    set_proxy_type: Optional[Type]
+    list_proxy_type: type
+    set_proxy_type: type | None
     def pull(self): ...
 
 class hashed_stack(stack):
-    set_proxy_type: Type
+    set_proxy_type: type
 
 class queue(deque_template):
-    list_proxy_type: Optional[Type]
-    set_proxy_type: Optional[Type]
+    list_proxy_type: type | None
+    set_proxy_type: type | None
     def pull(self): ...
 
 class hashed_queue(queue):
-    set_proxy_type: Type
+    set_proxy_type: type

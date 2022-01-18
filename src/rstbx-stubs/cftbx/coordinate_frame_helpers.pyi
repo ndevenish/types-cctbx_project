@@ -1,12 +1,14 @@
+from __future__ import annotations
+
 from typing import Any, Optional, Tuple, Union
 
 from scitbx.matrix import col, rec, sqr
 
 def align_reference_frame(
-    primary_axis: Union[rec, Tuple[float, float, float], col],
-    primary_target: Union[Tuple[int, int, int], Tuple[float, float, float], col],
-    secondary_axis: Union[rec, Tuple[float, float, float], col],
-    secondary_target: Union[Tuple[int, int, int], Tuple[float, float, float], col],
+    primary_axis: rec | tuple[float, float, float] | col,
+    primary_target: tuple[int, int, int] | tuple[float, float, float] | col,
+    secondary_axis: rec | tuple[float, float, float] | col,
+    secondary_target: tuple[int, int, int] | tuple[float, float, float] | col,
 ) -> sqr: ...
 def import_xds_xparm(xparm_file: str) -> coordinate_frame_information: ...
 def is_recognized_file(filename: str) -> bool: ...
@@ -32,27 +34,27 @@ class coordinate_frame_information:
         detector_origin: rec,
         detector_fast: rec,
         detector_slow: rec,
-        detector_size_fast_slow: Tuple[int, int],
-        detector_pixel_size_fast_slow: Tuple[float, float],
+        detector_size_fast_slow: tuple[int, int],
+        detector_pixel_size_fast_slow: tuple[float, float],
         rotation_axis: rec,
         sample_to_source: rec,
         wavelength: float,
-        real_space_a: Optional[rec] = ...,
-        real_space_b: Optional[rec] = ...,
-        real_space_c: Optional[rec] = ...,
-        space_group_number: Optional[int] = ...,
-        sigma_divergence: Optional[Any] = ...,
-        mosaicity: Optional[Any] = ...,
-        starting_angle: Optional[float] = ...,
-        oscillation_range: Optional[float] = ...,
-        starting_frame: Optional[int] = ...,
-        original_rotation: Optional[sqr] = ...,
-        data_range: Optional[Any] = ...,
-        panel_offset: Optional[Any] = ...,
-        panel_size: Optional[Any] = ...,
-        panel_origin: Optional[Any] = ...,
-        panel_fast: Optional[Any] = ...,
-        panel_slow: Optional[Any] = ...,
+        real_space_a: rec | None = ...,
+        real_space_b: rec | None = ...,
+        real_space_c: rec | None = ...,
+        space_group_number: int | None = ...,
+        sigma_divergence: Any | None = ...,
+        mosaicity: Any | None = ...,
+        starting_angle: float | None = ...,
+        oscillation_range: float | None = ...,
+        starting_frame: int | None = ...,
+        original_rotation: sqr | None = ...,
+        data_range: Any | None = ...,
+        panel_offset: Any | None = ...,
+        panel_size: Any | None = ...,
+        panel_origin: Any | None = ...,
+        panel_fast: Any | None = ...,
+        panel_slow: Any | None = ...,
     ) -> None: ...
     def get(self, parameter_name: str) -> Any: ...
     def get_detector_origin(self): ...

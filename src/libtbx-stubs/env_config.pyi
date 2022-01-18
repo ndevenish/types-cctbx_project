@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class environment:
     dispatcher_name: str
     def __init__(self, build_path: str) -> None: ...

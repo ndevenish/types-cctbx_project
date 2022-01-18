@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Dict, Generator, List, overload
 
 from scitbx.array_family import flex as flex
@@ -10,7 +12,7 @@ class matrix:
     def __init__(self, rows: int, columns: int) -> None: ...
     @overload
     def __init__(
-        self, rows: int, columns: int, elements_by_columns: List[Dict[int, float]]
+        self, rows: int, columns: int, elements_by_columns: list[dict[int, float]]
     ) -> None: ...
     @property
     def n_cols(self) -> int: ...

@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 class word:
     def __init__(
         O, value, quote_token=..., line_number=..., source_info=...

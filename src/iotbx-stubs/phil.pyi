@@ -1,3 +1,5 @@
+from __future__ import annotations
+
 from typing import Any, List, Literal, Optional, Union
 
 from cctbx import uctbx
@@ -6,19 +8,19 @@ from libtbx.phil import definition, qstr_converters, scope
 from libtbx.phil.tokenizer import word
 
 def parse(
-    input_string: Optional[str] = ...,
-    source_info: Optional[Any] = ...,
-    file_name: Optional[Any] = ...,
-    converter_registry: Optional[Any] = ...,
+    input_string: str | None = ...,
+    source_info: Any | None = ...,
+    file_name: Any | None = ...,
+    converter_registry: Any | None = ...,
     process_includes: bool = ...,
 ) -> scope: ...
 
 class unit_cell_converters:
     phil_type: str
     def as_words(
-        self, python_object: Union[AutoType, uctbx.unit_cell, None], master: definition
-    ) -> List[word]: ...
-    def from_words(self, words: List[word], master: definition) -> uctbx.unit_cell: ...
+        self, python_object: AutoType | uctbx.unit_cell | None, master: definition
+    ) -> list[word]: ...
+    def from_words(self, words: list[word], master: definition) -> uctbx.unit_cell: ...
 
 class space_group_converters:
     phil_type: str
@@ -34,10 +36,10 @@ default_converter_registry: Any
 def read_default(
     caller_file_name,
     params_extension: str = ...,
-    converter_registry: Optional[Any] = ...,
+    converter_registry: Any | None = ...,
     process_includes: bool = ...,
 ): ...
-def process_command_line(args, master_string, parse: Optional[Any] = ...): ...
+def process_command_line(args, master_string, parse: Any | None = ...): ...
 
 class process_command_line_with_files:
     master: Any
@@ -59,27 +61,27 @@ class process_command_line_with_files:
     def __init__(
         self,
         args,
-        master_phil: Optional[Any] = ...,
-        master_phil_string: Optional[Any] = ...,
-        pdb_file_def: Optional[Any] = ...,
-        reflection_file_def: Optional[Any] = ...,
-        map_file_def: Optional[Any] = ...,
-        cif_file_def: Optional[Any] = ...,
-        seq_file_def: Optional[Any] = ...,
-        pickle_file_def: Optional[Any] = ...,
-        ncs_file_def: Optional[Any] = ...,
-        directory_def: Optional[Any] = ...,
-        integer_def: Optional[Any] = ...,
-        float_def: Optional[Any] = ...,
-        space_group_def: Optional[Any] = ...,
-        unit_cell_def: Optional[Any] = ...,
-        usage_string: Optional[Any] = ...,
+        master_phil: Any | None = ...,
+        master_phil_string: Any | None = ...,
+        pdb_file_def: Any | None = ...,
+        reflection_file_def: Any | None = ...,
+        map_file_def: Any | None = ...,
+        cif_file_def: Any | None = ...,
+        seq_file_def: Any | None = ...,
+        pickle_file_def: Any | None = ...,
+        ncs_file_def: Any | None = ...,
+        directory_def: Any | None = ...,
+        integer_def: Any | None = ...,
+        float_def: Any | None = ...,
+        space_group_def: Any | None = ...,
+        unit_cell_def: Any | None = ...,
+        usage_string: Any | None = ...,
     ) -> None: ...
     def get_file_type_count(self, file_type): ...
     def __call__(self, arg): ...
     def process_other(self, arg): ...
     def get_cached_file(self, file_name): ...
-    def get_file(self, file_name, force_type: Optional[Any] = ...): ...
+    def get_file(self, file_name, force_type: Any | None = ...): ...
 
 class setup_app_generic:
     master_phil: Any
